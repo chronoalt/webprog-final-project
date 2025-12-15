@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'currency'
     ];
 
     /**
@@ -48,5 +49,13 @@ class User extends Authenticatable
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
         ];
+    }
+
+    public function userTasks() {
+        return $this->hasMany(UserTask::class);
+    }
+
+    public function userCollectibles() {
+        return $this->hasMany(UserCollectible::class);
     }
 }
